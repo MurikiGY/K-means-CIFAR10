@@ -5,3 +5,4 @@ tqdm
 keras
 scikit-learn
 tensorflow
+sklearn
