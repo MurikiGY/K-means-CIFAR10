@@ -1,9 +1,9 @@
-jupyterlab
-pandas
 numpy
 matplotlib
 tqdm
 keras
-scikit-learn
 tensorflow
+scikit-learn
 sklearn
+imageio
+np_utils
