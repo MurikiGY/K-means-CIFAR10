@@ -8,6 +8,8 @@ CLUSTER_DIR="pca_cluster"
 
 DIRECTORIES=$(find "$DIR" -regextype sed -regex "${DIR}/*${CLUSTER_DIR}_[0-9]*" -type d)
 
+SCORE=0
+
 while read -r C_DIR
 do
     echo 
@@ -23,7 +25,11 @@ do
     do
         NUM=$(echo ${LINE} | cut -d' ' -f1)
         CLASS=$(echo ${LINE} | cut -d' ' -f2)
-        echo "$NUM $(echo "scale=2;($NUM/$TOTAL)*100" | bc -l)% ${CLASS}"
+        PERCENT=$(echo "scale=2;($NUM/$TOTAL)*100" | bc -l)
+        echo "$NUM $PERCENT% ${CLASS}"
+
+        SCORE=$(echo "scale=2;$SCORE + ($NUM*$PERCENT)" | bc -l)
+        echo "Score: $SCORE"
     done
 
 done <<< "$DIRECTORIES"
