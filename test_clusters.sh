@@ -4,7 +4,7 @@
 #CLUSTER_DIR=${2:-cluster}
 
 DIR="results"
-CLUSTER_DIR="tsne_cluster"
+CLUSTER_DIR="pca_cluster"
 
 DIRECTORIES=$(find "$DIR" -regextype sed -regex "${DIR}/*${CLUSTER_DIR}_[0-9]*" -type d)
 
@@ -18,11 +18,12 @@ do
     TOTAL=$(echo "$FILES" | wc -l)
     CLASS_COUNT=$(echo "$FILES" | cut -d'_' -f2 | cut -d'.' -f1 | sort | uniq -c | tr -s ' ' | cut -d' ' -f2-)
 
+    echo "Found $TOTAL files"
     echo "$CLASS_COUNT" | while read -r LINE
     do
         NUM=$(echo ${LINE} | cut -d' ' -f1)
         CLASS=$(echo ${LINE} | cut -d' ' -f2)
-        echo "$(echo "scale=2;($NUM/$TOTAL)*100" | bc -l)% ${CLASS}"
+        echo "$NUM $(echo "scale=2;($NUM/$TOTAL)*100" | bc -l)% ${CLASS}"
     done
 
 done <<< "$DIRECTORIES"

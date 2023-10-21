@@ -9,8 +9,12 @@ from tqdm import tqdm
 # Load CIFAR-10 data
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
-#x_train = x_train[:100]
-#y_train = y_train[:100]
+x_train=x_train[1:100]
+y_train=y_train[1:100]
+
+x_test=x_test[1:100]
+y_test=y_test[1:100]
+
 
 # Preprocess the data
 x_train = x_train.astype('float32') / 255
