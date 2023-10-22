@@ -25,12 +25,14 @@ do
     do
         NUM=$(echo ${LINE} | cut -d' ' -f1)
         CLASS=$(echo ${LINE} | cut -d' ' -f2)
-        PERCENT=$(echo "scale=2;($NUM/$TOTAL)*100" | bc -l)
+        PERCENT=$(echo "scale=4;($NUM/$TOTAL)" | bc -l)
         echo "$NUM $PERCENT% ${CLASS}"
 
-        SCORE=$(echo "scale=2;$SCORE + ($NUM*$PERCENT)" | bc -l)
+        SCORE=$(echo "scale=4;$SCORE + ($NUM*$PERCENT)" | bc -l)
     done <<< "$CLASS_COUNT"
 
-    echo "Final score: $SCORE"
-
 done <<< "$DIRECTORIES"
+
+SCORE=$(echo "scale=4; $SCORE/1000" | bc -l)
+echo "Final score: $SCORE"
+
