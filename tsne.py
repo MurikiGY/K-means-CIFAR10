@@ -21,7 +21,7 @@ tsne = TSNE(n_components=num_components, random_state=42)
 x_test_tsne = tsne.fit_transform(x_test)
 
 # Apply K-means clustering on reduced data
-num_clusters = 10  # You can change this number based on the number of desired clusters
+num_clusters = 1000  # You can change this number based on the number of desired clusters
 kmeans = KMeans(n_clusters=num_clusters)
 
 cluster_labels = kmeans.fit_predict(x_test_tsne)

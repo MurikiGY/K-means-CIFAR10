@@ -33,6 +33,6 @@ do
 
 done <<< "$DIRECTORIES"
 
-SCORE=$(echo "scale=4; $SCORE/1000" | bc -l)
-echo "Final score: $SCORE"
+echo "Final score: $(echo "scale=4; $SCORE/1000" | bc -l)"
+echo "Final score: $(echo "scale=4; $SCORE/10000" | bc -l)"
 

@@ -15,7 +15,7 @@ x_train = x_train.reshape(x_train.shape[0], -1)
 x_test = x_test.reshape(x_test.shape[0], -1)
 
 # Apply K-means clustering
-num_clusters = 10  # You can change this number based on the number of desired clusters
+num_clusters = 1000  # You can change this number based on the number of desired clusters
 kmeans = KMeans(n_clusters=num_clusters)
 #kmeans.fit(x_test)
 #cluster_labels = kmeans.predict(x_test)
