@@ -9,11 +9,10 @@ from tqdm import tqdm
 # Load CIFAR-10 data
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
-x_train=x_train[1:1000]
-y_train=y_train[1:1000]
-
-x_test=x_test[1:1000]
-y_test=y_test[1:1000]
+#x_train=x_train[1:1000]
+#y_train=y_train[1:1000]
+#x_test=x_test[1:1000]
+#y_test=y_test[1:1000]
 
 
 # Preprocess the data
@@ -28,7 +27,7 @@ tsne = TSNE(n_components=num_components, random_state=42)
 x_train_tsne = tsne.fit_transform(x_train)
 
 # Apply K-means clustering on reduced data
-num_clusters = 50  # You can change this number based on the number of desired clusters
+num_clusters = 100  # You can change this number based on the number of desired clusters
 kmeans = KMeans(n_clusters=num_clusters)
 
 #kmeans.fit(x_train_tsne)

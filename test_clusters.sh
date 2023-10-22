@@ -4,7 +4,7 @@
 #CLUSTER_DIR=${2:-cluster}
 
 DIR="results"
-CLUSTER_DIR="tsne_cluster"
+CLUSTER_DIR=$1
 
 DIRECTORIES=$(find "$DIR" -regextype sed -regex "${DIR}/*${CLUSTER_DIR}_[0-9]*" -type d)
 

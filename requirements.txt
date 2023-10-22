@@ -4,6 +4,5 @@ tqdm
 keras
 tensorflow
 scikit-learn
-sklearn
 imageio
 np_utils
