@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NUM_CLUSTER=1000
+NUM_CLUSTER=10000
 
 python pixel.py
 python pca.py

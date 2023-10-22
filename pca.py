@@ -21,7 +21,7 @@ pca = PCA(n_components=num_components)
 x_test_pca = pca.fit_transform(x_test)
 
 # Apply K-means clustering on reduced data
-num_clusters = 1000  # You can change this number based on the number of desired clusters
+num_clusters = 10000  # You can change this number based on the number of desired clusters
 kmeans = KMeans(n_clusters=num_clusters)
 
 cluster_labels = kmeans.fit_predict(x_test_pca)
