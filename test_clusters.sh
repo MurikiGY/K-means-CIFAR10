@@ -4,7 +4,7 @@
 #CLUSTER_DIR=${2:-cluster}
 
 DIR="results"
-CLUSTER_DIR="pca_cluster"
+CLUSTER_DIR="tsne_cluster"
 
 DIRECTORIES=$(find "$DIR" -regextype sed -regex "${DIR}/*${CLUSTER_DIR}_[0-9]*" -type d)
 
@@ -21,7 +21,7 @@ do
     CLASS_COUNT=$(echo "$FILES" | cut -d'_' -f2 | cut -d'.' -f1 | sort | uniq -c | tr -s ' ' | cut -d' ' -f2-)
 
     echo "Found $TOTAL files"
-    echo "$CLASS_COUNT" | while read -r LINE
+    while read -r LINE
     do
         NUM=$(echo ${LINE} | cut -d' ' -f1)
         CLASS=$(echo ${LINE} | cut -d' ' -f2)
@@ -29,7 +29,8 @@ do
         echo "$NUM $PERCENT% ${CLASS}"
 
         SCORE=$(echo "scale=2;$SCORE + ($NUM*$PERCENT)" | bc -l)
-        echo "Score: $SCORE"
-    done
+    done <<< "$CLASS_COUNT"
+
+    echo "Final score: $SCORE"
 
 done <<< "$DIRECTORIES"
